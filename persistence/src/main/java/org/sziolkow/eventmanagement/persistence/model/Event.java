@@ -5,8 +5,7 @@ import lombok.Data;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
 
 @Entity
 @Data
@@ -34,9 +33,8 @@ public class Event {
             joinColumns = @JoinColumn(name = "event_id"),
             inverseJoinColumns = @JoinColumn(name = "participient_id")
     )
-    private List<Participant> participants = new ArrayList<>();
+    private HashSet<Participant> participants = new HashSet<>();
 
-    //Getters and setters ommitted for brevity
 
     public void addParticipient(Participant participant) {
         participants.add(participant);
